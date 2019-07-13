@@ -41,6 +41,7 @@ void main() => runApp(
      lastDate: DateTime.now()).then((DateTime dt){
     setState(() {
       selectedYear = dt.year;
+      print("selected year is $selectedYear");
       calculateAge();
     });
         });
@@ -66,7 +67,8 @@ void main() => runApp(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new OutlineButton(
-                child: new Text(selectedYear != null ? selectedYear.toString(): "Select your age"),
+                child: new Text(selectedYear != null ? selectedYear.toString():
+                 "Select your age"),
                 borderSide: new BorderSide(color: Colors.black, width: 3.0),
                 color: Colors.white,
                 onPressed: _showPicker
@@ -74,7 +76,7 @@ void main() => runApp(
               new Padding(
                 padding: const EdgeInsets.all(20.0),
               ),
-              new Text("Your age is 10",
+              new Text("Your age is ${age.toStringAsFixed(0)}",
               style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold))
             ],
           ),
