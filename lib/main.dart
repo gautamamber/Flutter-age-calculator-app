@@ -15,8 +15,47 @@ void main() => runApp(
   }
   
   class _MyHomePageState extends State<MyHomePage> {
+    // taking age in double because performing some animation
+  double age = 0.0;
+  var selectedYear;
 
-  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+
+  // datepicker
+
+  void _showPicker(){
+    showDatePicker(context: context,
+     firstDate: new DateTime(1990), 
+     initialDate: new DateTime(2019),
+     lastDate: DateTime.now()).then((DateTime dt){
+    setState(() {
+      selectedYear = dt.year;
+      calculateAge();
+    });
+        });
+  }
+
+  void calculateAge(){
+    setState(() {
+      age = 2019 - selectedYear;
+    });
+    
+  }
+
+
+
+
 
     @override
     Widget build(BuildContext context) {
@@ -27,10 +66,10 @@ void main() => runApp(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new OutlineButton(
-                child: new Text("Select your year of birth"),
+                child: new Text(selectedYear != null ? selectedYear.toString(): "Select your age"),
                 borderSide: new BorderSide(color: Colors.black, width: 3.0),
                 color: Colors.white,
-                onPressed: ()=>print("Hello world"),
+                onPressed: _showPicker
               ),
               new Padding(
                 padding: const EdgeInsets.all(20.0),
