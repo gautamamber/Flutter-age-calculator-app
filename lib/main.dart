@@ -71,7 +71,7 @@ void main() => runApp(
                  "Select your age"),
                 borderSide: new BorderSide(color: Colors.black, width: 3.0),
                 color: Colors.white,
-                onPressed: _showPicker
+                onPressed: _showPicker,
               ),
               new Padding(
                 padding: const EdgeInsets.all(20.0),
